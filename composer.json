@@ -1,0 +1,39 @@
+{
+    "name": "unniks/TwitterPowertracker",
+    "description": "A Laravel Package for Twitter Powertrack",
+    "keywords": [
+        "unniks",
+        "twitter-power-track"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Unni K S",
+            "email": "unniks.here@gmail.com",
+            "homepage": "https://facebook.com/unniks.here",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "unniks\\TwitterPowertracker\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "unniks\\TwitterPowertracker\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
