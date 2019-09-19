@@ -1,11 +1,11 @@
 
-##Twitter Power Tracker
+## Twitter Power Tracker
 
 Twitter Power Tracker is the package for connecting and streaming data with twitter's enterprise streaming plans.
 
-##Installation
+## Installation
 
-$composer require unniks/twitter-powertracker
+$ composer require unniks/twitter-powertracker
 
 **Don't forget to add service provider** <br>
 unniks\TwitterPowertracker\PowerTrackerServiceProvider::class,
@@ -31,8 +31,8 @@ TWITTER_GNIP_STREAMING_30_DAYS_URL=https://gnip-api.twitter.com/search/30day/acc
 TWITTER_GNIP_RULES_URL=https://gnip-api.twitter.com/rules/powertrack/accounts/{username}/publishers/twitter/{variabale}.json <br>
 
 <br>
-**For Rule Creation**<br>
-use TwitterPowertracker;<br>
+**For Rule Creation** <br>
+use TwitterPowertracker; <br>
 TwitterPowertracker::ruleCreation($json); //pass json values of rules to create<br> <br>
 **For streaming data**
 use TwitterPowertracker; <br>
