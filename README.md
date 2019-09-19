@@ -31,16 +31,16 @@ TWITTER_GNIP_STREAMING_30_DAYS_URL=https://gnip-api.twitter.com/search/30day/acc
 TWITTER_GNIP_RULES_URL=https://gnip-api.twitter.com/rules/powertrack/accounts/{username}/publishers/twitter/{variabale}.json <br>
 
 <br>
-**For Rule Creation** <br>
+ **For Rule Creation** <br>
 use TwitterPowertracker; <br>
 TwitterPowertracker::ruleCreation($json); //pass json values of rules to create<br> <br>
-**For streaming data**
+ **For streaming data**
 use TwitterPowertracker; <br>
 TwitterPowertracker::powerStream(); <br>
-Data will be available at the model app/TwitterPowerTrackerStream.php
+Data will be available at the model app/TwitterPowerTrackerStream.php <br>
 <br>
 <br>
-***Enjoy***
+ ***Enjoy***
 
 ## License
 
