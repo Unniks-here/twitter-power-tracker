@@ -26,8 +26,6 @@ class TwitterPowerTracker
 
     protected function stream()
     {
-        // $this->login='arun@maybe.xyz';
-        // $this->pass='Qazxsw321$';
         try{
             $curl = curl_init();
             curl_setopt_array($curl, array(
