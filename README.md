@@ -14,10 +14,8 @@ unniks\TwitterPowertracker\PowerTrackerServiceProvider::class,
 'TwitterPowertracker' => unniks\TwitterPowertracker\PowerTrackFacade::class,
 <br>
 **Publish Vendor Files for configuration** <br>
-php artisan vendor:publish --provider="unniks\TwitterPowertracker\PowerTrackerServiceProvider" --tag="config"
+php artisan vendor:publish --provider="unniks\TwitterPowertracker\PowerTrackerServiceProvider"
 <br>
-**Execute following commands to copy TwitterPowerTrackStream model to app folder** <br>
-cp vendor/unniks/twitter-powertracker/example/TwitterPowerTrackerStream.php app/TwitterPowerTrackerStream.php
 <br>
 ##Usage
 <br>
