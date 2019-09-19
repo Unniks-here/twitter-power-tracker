@@ -17,7 +17,7 @@ unniks\TwitterPowertracker\PowerTrackerServiceProvider::class,
 php artisan vendor:publish --provider="unniks\TwitterPowertracker\PowerTrackerServiceProvider"
 <br>
 <br>
-##Usage
+## Usage
 <br>
 **We need GNIP account before using with this feature. If you have GNIP username and password, add following variables in your .env file** <br>
 
@@ -37,6 +37,7 @@ use TwitterPowertracker; <br>
 TwitterPowertracker::powerStream();<br>
 Data will be available at the model app/TwitterPowerTrackerStream.php
 <br>
+
 <br>
 ***Enjoy***
 
