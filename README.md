@@ -1,11 +1,11 @@
 
-##Twitter Power Tracker
+## Twitter Power Tracker
 
 Twitter Power Tracker is the package for connecting and streaming data with twitter's enterprise streaming plans.
 
-##Installation
+## Installation
 
-$composer require unniks/twitter-powertracker
+$ composer require unniks/twitter-powertracker
 
 **Don't forget to add service provider** <br>
 unniks\TwitterPowertracker\PowerTrackerServiceProvider::class,
@@ -19,7 +19,7 @@ php artisan vendor:publish --provider="unniks\TwitterPowertracker\PowerTrackerSe
 **Execute following commands to copy TwitterPowerTrackStream model to app folder** <br>
 cp vendor/unniks/twitter-powertracker/example/TwitterPowerTrackerStream.php app/TwitterPowerTrackerStream.php
 <br>
-##Usage
+## Usage
 <br>
 **We need GNIP account before using with this feature. If you have GNIP username and password, add following variables in your .env file** <br>
 
