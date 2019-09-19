@@ -13,7 +13,7 @@ class PowerTrackerServiceProvider extends ServiceProvider
                 __DIR__.'/../config/power-tracker-config.php' => config_path('power-tracker-config.php'),
             ], 'config');
             $this->publishes([
-                __DIR__.'/../examples/TwitterPowerTrackerStream.php' => app_path('TwitterPowerTrackerStream.php')
+                __DIR__.'/../example/TwitterPowerTrackerStream.php' => app_path('TwitterPowerTrackerStream.php')
             ],'app');
         }
     }
