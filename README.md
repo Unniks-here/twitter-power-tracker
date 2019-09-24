@@ -5,7 +5,7 @@ Twitter Power Tracker is the package for connecting and streaming data with twit
 
 ## Installation
 
-$ composer require unniks/twitter-powertracker
+<i>$ composer require unniks/twitter-powertracker</i>
 
 **Don't forget to add service provider** <br>
 unniks\TwitterPowertracker\PowerTrackerServiceProvider::class,
@@ -19,7 +19,8 @@ php artisan vendor:publish --provider="unniks\TwitterPowertracker\PowerTrackerSe
 <br>
 ## Usage
 <br>
-**We need GNIP account before using with this feature. If you have GNIP username and password, add following variables in your .env file** <br>
+<b>We need GNIP account before using with this feature. If you have GNIP username and password, add following variables in your .env file</b>
+<br>
 
 TWITTER_GNIP_USERNAME=test@test.xyz <br>
 TWITTER_GNIP_PASSWORD=xxxxx <br>
