@@ -1,11 +1,11 @@
 
-##Twitter Power Tracker
+## Twitter Power Tracker
 
 Twitter Power Tracker is the package for connecting and streaming data with twitter's enterprise streaming plans.
 
-##Installation
+## Installation
 
-$composer require unniks/twitter-powertracker
+<i>$ composer require unniks/twitter-powertracker</i>
 
 **Don't forget to add service provider** <br>
 unniks\TwitterPowertracker\PowerTrackerServiceProvider::class,
@@ -14,14 +14,13 @@ unniks\TwitterPowertracker\PowerTrackerServiceProvider::class,
 'TwitterPowertracker' => unniks\TwitterPowertracker\PowerTrackFacade::class,
 <br>
 **Publish Vendor Files for configuration** <br>
-php artisan vendor:publish --provider="unniks\TwitterPowertracker\PowerTrackerServiceProvider" --tag="config"
+php artisan vendor:publish --provider="unniks\TwitterPowertracker\PowerTrackerServiceProvider"
 <br>
-**Execute following commands to copy TwitterPowerTrackStream model to app folder** <br>
-cp vendor/unniks/twitter-powertracker/example/TwitterPowerTrackerStream.php app/TwitterPowerTrackerStream.php
 <br>
-##Usage
+## Usage
 <br>
-**We need GNIP account before using with this feature. If you have GNIP username and password, add following variables in your .env file** <br>
+<b>We need GNIP account before using with this feature. If you have GNIP username and password, add following variables in your .env file</b>
+<br>
 
 TWITTER_GNIP_USERNAME=test@test.xyz <br>
 TWITTER_GNIP_PASSWORD=xxxxx <br>
@@ -30,17 +29,17 @@ TWITTER_GNIP_REPLAY_URL=https://gnip-stream.gnip.com/replay/powertrack/accounts/
 TWITTER_GNIP_STREAMING_30_DAYS_URL=https://gnip-api.twitter.com/search/30day/accounts/{username}/{variabale}.json <br>
 TWITTER_GNIP_RULES_URL=https://gnip-api.twitter.com/rules/powertrack/accounts/{username}/publishers/twitter/{variabale}.json <br>
 
-<br>
-**For Rule Creation**<br>
-use TwitterPowertracker;<br>
-TwitterPowertracker::ruleCreation($json); //pass json values of rules to create<br> <br>
+**For Rule Creation** <br>
+use TwitterPowertracker; <br>
+TwitterPowertracker::ruleCreation($json); //pass json values of rules to create<br>
 **For streaming data**
 use TwitterPowertracker; <br>
 TwitterPowertracker::powerStream();<br>
 Data will be available at the model app/TwitterPowerTrackerStream.php
 <br>
+
 <br>
-***Enjoy***
+<h4>******** Awaiting Brilliant Contributions for this simple Package **********</h4>
 
 ## License
 

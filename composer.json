@@ -2,15 +2,18 @@
     "name": "unniks/twitter-powertracker",
     "description": "A Laravel Package for Twitter Powertrack",
     "keywords": [
-        "unniks",
-        "twitter-power-track"
+        "unni ks",
+        "twitter-power-track",
+        "twitter streaming",
+        "twitter power tracking",
+        "laravel twitter enterprise package"
     ],
     "license": "MIT",
     "authors": [
         {
             "name": "Unni K S",
             "email": "unniks.here@gmail.com",
-            "homepage": "https://facebook.com/unniks.here",
+            "homepage": "https://github.com/Unniks-here",
             "role": "Developer"
         }
     ],
