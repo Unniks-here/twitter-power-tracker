@@ -38,7 +38,7 @@ Data will be available at the model app/TwitterPowerTrackerStream.php
 <br>
 
 <br>
-**Awaiting Contributions**
+<h2>Awaiting Contributions</h2>
 
 ## License
 
