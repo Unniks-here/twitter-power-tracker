@@ -26,8 +26,6 @@ class TwitterPowerTracker
 
     protected function stream()
     {
-        // $this->login='arun@maybe.xyz';
-        // $this->pass='Qazxsw321$';
         try{
             $curl = curl_init();
             curl_setopt_array($curl, array(
@@ -98,6 +96,36 @@ class TwitterPowerTracker
         try{
             $ch = curl_init();
             $this->url=$this->config['twitter_gnip_rules_url'];
+            curl_setopt($ch, CURLOPT_URL, $this->url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch,CURLOPT_USERPWD,$this->login.':'.$this->pass);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+            curl_setopt($ch, CURLOPT_POST, 1);
+
+            $headers = array();
+            $headers[] = 'Content-Type: application/x-www-form-urlencoded';
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+            $result = curl_exec($ch);
+            if (curl_errno($ch)) {
+                echo 'Error:' . curl_error($ch);
+            }
+            curl_close($ch);
+            return $result;
+        }
+        catch(Exception $e)
+        {
+            Log::error($e->getMessage());
+            return $e->getMessage();
+        }
+    }
+
+    //Create rules using this function
+    public function ruleDeletion($json)
+    {
+        try{
+            $ch = curl_init();
+            $this->url=$this->config['twitter_gnip_rules_url'].'?_method=delete';
             curl_setopt($ch, CURLOPT_URL, $this->url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch,CURLOPT_USERPWD,$this->login.':'.$this->pass);
