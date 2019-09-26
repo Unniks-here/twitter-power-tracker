@@ -10,8 +10,9 @@ $ composer require unniks/twitter-powertracker
 ```
 
 #### Don't forget to add service provider
+```sh
 unniks\TwitterPowertracker\PowerTrackerServiceProvider::class,
-
+```
 #### Twitter Power Tracker comes with facade. Add following lines in aliases
 ```sh
 'TwitterPowertracker' => unniks\TwitterPowertracker\PowerTrackFacade::class,
