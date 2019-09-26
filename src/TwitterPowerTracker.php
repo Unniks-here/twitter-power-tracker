@@ -74,13 +74,13 @@ class TwitterPowerTracker
        // echo $data;
         $returned = $this->dataport($data);
 
+        flush();
         if($returned == 'exit')
         {
             Log::alert('exiting from power track listening');
             return 0;
         }
         // ob_flush();
-        flush();
         return $length;
     }
 
