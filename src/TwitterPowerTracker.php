@@ -15,6 +15,7 @@ class TwitterPowerTracker
     protected $pass;
     protected $login;
     protected $buffersize;
+    private $curl ;
 
     public function __construct(Repository $config)
     {
@@ -27,8 +28,8 @@ class TwitterPowerTracker
     protected function stream()
     {
         try{
-            $curl = curl_init();
-            curl_setopt_array($curl, array(
+            $this->curl = curl_init();
+            curl_setopt_array($this->curl, array(
                     CURLOPT_URL => $this->url,
                     CURLOPT_RETURNTRANSFER => 1,
                     CURLOPT_CUSTOMREQUEST => 'GET',
@@ -39,13 +40,12 @@ class TwitterPowerTracker
                     CURLOPT_WRITEFUNCTION => array($this, "callback")
                 )
             );
-            curl_exec($curl);
-            curl_close($curl);
+            curl_exec($this->curl);
+            curl_close($this->curl);
         }
         catch(Exception $e)
         {
             Log::error($e->getMessage());
-            self:stream();
         }
     }
 
@@ -72,7 +72,13 @@ class TwitterPowerTracker
         }
         $length = strlen($data);
        // echo $data;
-        $this->dataport($data);
+        $returned = $this->dataport($data);
+
+        if($returned == 'exit')
+        {
+            Log::alert('exiting from power track listening');
+            return 0;
+        }
         // ob_flush();
         flush();
         return $length;
@@ -81,7 +87,7 @@ class TwitterPowerTracker
     protected function dataport($data)
     {
         try{
-            TwitterPowerTrackerStream::getPowerTrack($data);
+            return TwitterPowerTrackerStream::getPowerTrack($data);
         }
         catch(Exception $e)
         {
