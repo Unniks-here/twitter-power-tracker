@@ -13,7 +13,9 @@ $ composer require unniks/twitter-powertracker
 unniks\TwitterPowertracker\PowerTrackerServiceProvider::class,
 
 **Twitter Power Tracker comes with facade. Add following lines in aliases**
+```sh
 'TwitterPowertracker' => unniks\TwitterPowertracker\PowerTrackFacade::class,
+```
 
 **Publish Vendor Files for configuration** 
 ```sh
@@ -68,8 +70,10 @@ JSON Format
 Find rules documentation from here: https://developer.twitter.com/en/docs/tweets/filter-realtime/overview/powertrack-api
 
 **For streaming data**
+```sh
 use TwitterPowertracker; 
 TwitterPowertracker::powerStream();
+```
 Data will be available at the model app/TwitterPowerTrackerStream.php
 
 ```sh
