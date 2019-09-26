@@ -8,10 +8,10 @@ Twitter Power Tracker is the package for connecting and streaming data with twit
 ```sh
 $ composer require unniks/twitter-powertracker
 ```
-<br>
+
 **Don't forget to add service provider**
 unniks\TwitterPowertracker\PowerTrackerServiceProvider::class,
-<br>
+
 **Twitter Power Tracker comes with facade. Add following lines in aliases**
 'TwitterPowertracker' => unniks\TwitterPowertracker\PowerTrackFacade::class,
 
@@ -72,11 +72,17 @@ use TwitterPowertracker;
 TwitterPowertracker::powerStream();
 Data will be available at the model app/TwitterPowerTrackerStream.php
 
+```sh
+public static function getPowerTrack($data)
+{
+    //do some stuff with incoming $data
+}
+```
 
-**For force stopping the live streaming
+**For force stopping the live streaming**
 
 ```sh
-//add in the function "app/TwitterPowerTrackerStream.php"
+//return "exit" in the function "app/TwitterPowerTrackerStream.php"
 
 public static function getPowerTrack($data)
 {
