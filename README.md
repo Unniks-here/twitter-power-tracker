@@ -9,15 +9,15 @@ Twitter Power Tracker is the package for connecting and streaming data with twit
 $ composer require unniks/twitter-powertracker
 ```
 
-### Don't forget to add service provider
+#### Don't forget to add service provider
 unniks\TwitterPowertracker\PowerTrackerServiceProvider::class,
 
-### Twitter Power Tracker comes with facade. Add following lines in aliases
+#### Twitter Power Tracker comes with facade. Add following lines in aliases
 ```sh
 'TwitterPowertracker' => unniks\TwitterPowertracker\PowerTrackFacade::class,
 ```
 
-### Publish Vendor Files for configuration
+#### Publish Vendor Files for configuration
 ```sh
 $ php artisan vendor:publish --provider="unniks\TwitterPowertracker\PowerTrackerServiceProvider"
 ```
@@ -36,20 +36,20 @@ TWITTER_GNIP_RULES_URL=https://gnip-api.twitter.com/rules/powertrack/accounts/{u
 ```
 
 
-### For Rule Creation
+#### For Rule Creation
 ```sh
 use TwitterPowertracker; 
 TwitterPowertracker::ruleCreation($json); //pass json values of rules to create
 ```
 
 
-### For Rule Deletion 
+#### For Rule Deletion 
 ```sh
 use TwitterPowertracker;
 TwitterPowertracker::ruleDeletion($json); //pass json values of rules to delete
 ```
 
-### Rules format
+#### Rules format
 
 ```sh
 JSON Format 
@@ -69,7 +69,7 @@ JSON Format
 
 Find rules documentation from here: https://developer.twitter.com/en/docs/tweets/filter-realtime/overview/powertrack-api
 
-### For streaming data
+#### For streaming data
 
 ```sh
 use TwitterPowertracker; 
@@ -84,7 +84,7 @@ public static function getPowerTrack($data)
 }
 ```
 
-### For force stopping the live streaming
+#### For force stopping the live streaming
 
 ```sh
 //return "exit" in the function "app/TwitterPowerTrackerStream.php"
@@ -99,7 +99,7 @@ public static function getPowerTrack($data)
 }
 ```
 
-******** Awaiting Brilliant Contributions for this simple Package **********
+#### ********* Awaiting Brilliant Contributions for this simple Package **********
 
 ## License
 
