@@ -155,4 +155,127 @@ class TwitterPowerTracker
             return $e->getMessage();
         }
     }
+
+    function __call($name,$arg){
+        if($name == 'ruleCreationByArray')
+        {
+            switch(count($arg))
+            {
+                    case 1 :
+                        try{
+                            $rules=array();
+                            $values =array();
+                            $rules_array=$arg[0];
+                            foreach($rules_array as $key=>$rule)
+                            {
+                                $values[]=['value'=>$rule];
+                            }
+
+                            $rules['rules']=$values;
+
+                            $rule_v=json_encode($rules);
+
+                            return self::ruleCreation($rule_v);
+                        }
+                        catch(Exception $e)
+                        {
+                            Log::error($e);
+                        }
+                    break;
+                    case 2 :
+                        try{
+                            $rules=array();
+                            $values =array();
+                            $rules_array=$arg[0];
+                            $tags_array=$arg[1];
+                            foreach($rules_array as $key=>$rule)
+                            {
+                                $values[]=['value'=>$rule,'tag'=>$tags_array[$key]];
+                            }
+
+                            $rules['rules']=$values;
+
+                            $rule_v=json_encode($rules);
+
+                            return self::ruleCreation($rule_v);
+                        }
+                        catch(Exception $e)
+                        {
+                            Log::error($e);
+                        }
+                    break;
+                    default : throw new \Exception ('invalid number of arguments supplied');
+            }
+        }
+        if($name == 'ruleCreationByJson')
+        {
+            switch(count($arg))
+            {
+                    case 1 :
+                        return self::ruleCreation($rule_v);
+                    default : throw new \Exception ('invalid number of arguments supplied');
+            }
+        }
+        if($name == 'ruleDeletionByArray')
+        {
+            switch(count($arg))
+            {
+                    case 1 :
+                        try{
+                            $rules=array();
+                            $values =array();
+                            $rules_array=$arg[0];
+                            foreach($rules_array as $key=>$rule)
+                            {
+                                $values[]=['value'=>$rule];
+                            }
+
+                            $rules['rules']=$values;
+
+                            $rule_v=json_encode($rules);
+
+                            return self::ruleDeletion($rule_v);
+                        }
+                        catch(Exception $e)
+                        {
+                            Log::error($e);
+                        }
+                    break;
+                    case 2 :
+                        try{
+                            $rules=array();
+                            $values =array();
+                            $rules_array=$arg[0];
+                            $tags_array=$arg[1];
+                            foreach($rules_array as $key=>$rule)
+                            {
+                                $values[]=['value'=>$rule,'tag'=>$tags_array[$key]];
+                            }
+
+                            $rules['rules']=$values;
+
+                            $rule_v=json_encode($rules);
+
+                            return self::ruleDeletion($rule_v);
+                        }
+                        catch(Exception $e)
+                        {
+                            Log::error($e);
+                        }
+                    break;
+                    default : throw new \Exception ('invalid number of arguments supplied');
+                    ;
+            }
+        }
+        if($name == 'ruleDeletionByJson')
+        {
+            switch(count($arg))
+            {
+                    case 1 :
+                            return self::ruleDeletion($arg[0]);
+                    default : throw new \Exception ('invalid number of arguments supplied');
+                    ;
+            }
+        }
+    }
 }
