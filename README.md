@@ -35,40 +35,49 @@ TWITTER_GNIP_REPLAY_URL=https://gnip-stream.gnip.com/replay/powertrack/accounts/
 TWITTER_GNIP_STREAMING_30_DAYS_URL=https://gnip-api.twitter.com/search/30day/accounts/{username}/{variabale}.json <br>
 TWITTER_GNIP_RULES_URL=https://gnip-api.twitter.com/rules/powertrack/accounts/{username}/publishers/twitter/{variabale}.json 
 ```
-
-
-#### For Rule Creation
+#### Use this facade
 ```sh
 use TwitterPowertracker; 
-TwitterPowertracker::ruleCreation($json); //pass json values of rules to create
 ```
 
+#### For Rule Creation
 
+###### if you can pass json format recomended by GNIP console
+_
+```sh
+ $json =  {"rules" :[{"value" : "from:foo","tag" : "some_foo_tag"},{"value" : "foo:keyword"}]} ;
+TwitterPowertracker::ruleCreationByJson($json);
+```
+###### or just pass array of rules like this using ruleCreationByArray()
+_
+```sh
+$rules =['from:rahul','@shami'];
+TwitterPowertracker::ruleCreationByArray($rules); 
+```
+###### if you need to pass tags as array just use like this
+_
+```sh
+$rules = ['from:rahul','@shami'];
+$tags = ['rahul_tag','sham_tag'];
+TwitterPowertracker::ruleCreationByArray($rules,$tags);
+```
+note: array index of $tags should have matched to array index of $rules 
 #### For Rule Deletion 
+###### you can use above mentioned same techniques for
+_
 ```sh
-use TwitterPowertracker;
-TwitterPowertracker::ruleDeletion($json); //pass json values of rules to delete
+TwitterPowertracker::ruleDeletionByJson($json); 
+```
+###### and
+_
+##### 
+```sh
+TwitterPowertracker::ruleDeletionByJson($json); 
+TwitterPowertracker::ruleDeletionByArray($rules,$tags); 
 ```
 
-#### Rules format
 
-```sh
-JSON Format 
-        {<br>
-        "rules" :
-            [
-                {
-                "value" : "keyword (contains:substring OR \"this phrase\")",
-                "tag" : "Customer_1"
-                },
-                {
-                "value" : "keyword lang:en profile_locality:\"New York City\""
-                }
-            ]
-        }
-```
-
-Find rules documentation from here: https://developer.twitter.com/en/docs/tweets/filter-realtime/overview/powertrack-api
+What is rules? Please go through this documentation: https://developer.twitter.com/en/docs/tweets/filter-realtime/overview/powertrack-api
 
 #### For streaming data
 
