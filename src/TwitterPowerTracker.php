@@ -62,7 +62,6 @@ class TwitterPowerTracker
             else
                 Log::alert('<<< Power Track streaming exited >>>');
         }
-
     }
 
     public function powerReplayStream()
