@@ -16,6 +16,7 @@ class TwitterPowerTracker
     protected $login;
     protected $buffersize;
     private $curl ;
+    private $exit;
 
     public function __construct(Repository $config)
     {
@@ -23,6 +24,7 @@ class TwitterPowerTracker
         $this->login=$this->config['twitter_gnip_username'];
         $this->pass=$this->config['twitter_gnip_password'];
         $this->buffersize = 2000;
+        $this->exit='no';
     }
 
     protected function stream()
@@ -52,7 +54,14 @@ class TwitterPowerTracker
     public function powerStream()
     {
         $this->url=$this->config['twitter_gnip_url'];
-        $this->stream();
+        while($this->exit!='exit')
+        {
+            $this->stream();
+            if($this->exit!='exit')
+                Log::alert('<<< Power Track streaming ended and restarted >>>');
+            else
+                Log::alert('<<< Power Track streaming exited >>>');
+        }
     }
 
     public function powerReplayStream()
@@ -77,7 +86,7 @@ class TwitterPowerTracker
         flush();
         if($returned == 'exit')
         {
-            Log::alert('exiting from power track listening');
+            $this->exit='exit';
             return 0;
         }
         // ob_flush();
