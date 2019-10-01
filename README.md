@@ -85,7 +85,7 @@ What is rules? Please go through this documentation: https://developer.twitter.c
 use TwitterPowertracker; 
 TwitterPowertracker::powerStream();
 ```
-By calling powerStream() data will be continuously streamed the model app/TwitterPowerTrackerStream.php 
+By calling powerStream() data will be continuously streamed to the model app/TwitterPowerTrackerStream.php 
 
 ```sh
 public static function getPowerTrack($data)
@@ -108,7 +108,24 @@ public static function getPowerTrack($data)
     }
 }
 ```
-
+#### For 30 days twitter data 
+##### Method 1
+```sh
+$results = TwitterPowertracker::thirtyDaysGet($rule);
+``` 
+##### Method 2
+```sh
+$results = TwitterPowertracker::thirtyDaysGet($rule,$maxResults);
+```
+##### Method 3
+```sh
+$results = TwitterPowertracker::thirtyDaysGet($rule,$maxResults,$startDate,$endDate);
+```
+##### Method 4
+```sh
+$results = TwitterPowertracker::thirtyDaysGet($rule,$maxResults,$startDate,$endDate,$next);
+```
+(use https://support.gnip.com/apis/search_api2.0/api_reference.html for reference)
 #### ********* Awaiting Brilliant Contributions for this simple Package **********
 
 ## License
