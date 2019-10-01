@@ -2,6 +2,7 @@
 namespace unniks\TwitterPowertracker;
 use Illuminate\Contracts\Config\Repository;
 use App\TwitterPowerTrackerStream;
+use DateTime;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use PhpParser\Node\Stmt\Catch_;
@@ -70,6 +71,7 @@ class TwitterPowerTracker
 
     public function power30DaysStream()
     {
+
     }
 
     public function callback($curl, $data)
@@ -124,6 +126,35 @@ class TwitterPowerTracker
             $result = curl_exec($ch);
             if (curl_errno($ch)) {
                 echo 'Error:' . curl_error($ch);
+            }
+            curl_close($ch);
+            return $result;
+        }
+        catch(Exception $e)
+        {
+            Log::error($e->getMessage());
+            return $e->getMessage();
+        }
+    }
+
+    public function thirtyDayCurlExce($json)
+    {
+        try{
+            $ch = curl_init();
+            $this->url=$this->config['twitter_gnip_30_days_url'];
+            curl_setopt($ch, CURLOPT_URL, $this->url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch,CURLOPT_USERPWD,$this->login.':'.$this->pass);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+            curl_setopt($ch, CURLOPT_POST, 1);
+
+            $headers = array();
+            $headers[] = 'Content-Type: application/x-www-form-urlencoded';
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+            $result = curl_exec($ch);
+            if (curl_errno($ch)) {
+                Log::error( 'Error:' . curl_error($ch));
             }
             curl_close($ch);
             return $result;
@@ -285,6 +316,73 @@ class TwitterPowerTracker
                     default : throw new \Exception ('invalid number of arguments supplied');
                     ;
             }
+        }
+        if($name == 'thirtyDaysGet')
+        {
+            $json = [];
+            switch(count($arg))
+            {
+                    case 1 :
+                            $rule = $arg[0];
+                            $json['query'] = $rule;
+                            break;
+                    case 2 :
+                            $rule = $arg[0];
+                            $maxResults = $arg[1];
+                            $json['query'] = $rule;
+                            if($maxResults!=-1)
+                            $json['maxResults'] = $maxResults;
+                            break;
+                    case 4 :
+                            $rule = $arg[0];
+                            $maxResults = $arg[1];
+                            $startDate = $arg[2];
+                            $endDate = $arg[3];
+
+                            $startDate = new DateTime($startDate);
+                            $startDate = $startDate->format('YmdHi');
+
+                            $endDate = new DateTime($endDate);
+                            $endDate = $endDate->format('YmdHi');
+
+                            $json['query'] = $rule;
+                            if($maxResults!=-1)
+                            $json['maxResults'] = $maxResults;
+                            $json['fromDate'] = $startDate;
+                            $json['toDate'] = $endDate;
+                            break;
+
+                    case 4 :
+
+                            $rule = $arg[0];
+                            $maxResults = $arg[1];
+                            $startDate = $arg[2];
+                            $endDate = $arg[3];
+
+                            $startDate = new DateTime($startDate);
+                            $startDate = $startDate->format('YmdHis');
+
+                            $endDate = new DateTime($endDate);
+                            $endDate = $endDate->format('YmdHis');
+
+                            $next = $arg[4];
+
+                            $json['query'] = $rule;
+                            if($maxResults!=-1)
+                            $json['maxResults'] = $maxResults;
+                            $json['fromDate'] = $startDate;
+                            $json['toDate'] = $endDate;
+                            $json['next'] = $next;
+                            break;
+
+
+                    default : throw new \Exception ('invalid number of arguments supplied');
+                    ;
+            }
+
+            $json = json_encode($json);
+            Log::alert($json);
+            return self::thirtyDayCurlExce($json);
         }
     }
 }
