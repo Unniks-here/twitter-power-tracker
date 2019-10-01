@@ -381,7 +381,6 @@ class TwitterPowerTracker
             }
 
             $json = json_encode($json);
-            Log::alert($json);
             return self::thirtyDayCurlExce($json);
         }
     }
