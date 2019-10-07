@@ -55,14 +55,7 @@ class TwitterPowerTracker
     public function powerStream()
     {
         $this->url=$this->config['twitter_gnip_url'];
-        while($this->exit!='exit')
-        {
-            $this->stream();
-            if($this->exit!='exit')
-                Log::alert('<<< Power Track streaming ended and restarted >>>');
-            else
-                Log::alert('<<< Power Track streaming exited >>>');
-        }
+        
     }
 
     public function powerReplayStream()
