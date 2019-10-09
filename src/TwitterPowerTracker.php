@@ -26,6 +26,9 @@ class TwitterPowerTracker
         $this->pass=$this->config['twitter_gnip_password'];
         $this->buffersize = 2000;
         $this->exit='no';
+        if(!$this->config['twitter_gnip_url']){
+            throw new \Exception ('Twitter enterprise error >>> please add .env according to the documentation');
+        }
     }
 
     protected function stream()
@@ -54,8 +57,11 @@ class TwitterPowerTracker
 
     public function powerStream()
     {
-        $this->url=$this->config['twitter_gnip_url'];
-        
+                $this->url=$this->config['twitter_gnip_url'];
+
+                while($this->exit!='exit'){
+                    self::stream();
+                }
     }
 
     public function powerReplayStream()
